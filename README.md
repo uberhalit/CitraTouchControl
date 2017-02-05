@@ -6,11 +6,11 @@ This is useful for remote play sessions with Citra from a mobile device or if yo
 
 It will auto adjust to match Citra position and size, onscreen controls' keys can be modified and touch/controls can be toggled on and off.
 
-[See it in Action](http://a.pomf.cat/rqiutm.webm)
+![#c5f015](http://placehold.it/15/c5f015/000000?text=+) **[See it in Action](http://a.pomf.cat/rqiutm.webm)**
 
 ![CitraTouchControl](https://i.imgur.com/u38o2VN.png)
 ## Requirements ##
-* Citra-Qt build (grab the latest bleeding edge build here: 
+* Citra-Qt build ([grab the latest bleeding edge build here](https://github.com/citra-emu/citra-bleeding-edge/releases)) 
 * Windows PC which runs Citra at decent (>30) framerates
 * Mobile device which can handle a massive input network-stream
 * fast (>75Mbps) network connection between the host-PC and your mobile device (ideally PC->LAN->Router->5G WLAN->Mobile device)

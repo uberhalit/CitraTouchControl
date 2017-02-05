@@ -1,0 +1,90 @@
+﻿<Window x:Class="CitraTouchControl.KeysWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CitraTouchControl"
+        mc:Ignorable="d"
+        Title="CitraTouchControl - Configurate Keys" Height="200" Width="700" Topmost="True" WindowStartupLocation="CenterOwner" WindowStyle="ToolWindow" Background="LightGray" FontSize="18" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <GroupBox Grid.Column="0" Header="Face Buttons">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <GroupBox Grid.Column="0" Grid.Row="0" Header="A:">
+                    <TextBox x:Name="tbA" Background="LightGray" VerticalAlignment="Center" TextAlignment="Center" PreviewKeyDown="tb_PreviewKeyDown" />
+                </GroupBox>
+                <GroupBox Grid.Column="1" Grid.Row="0" Header="B:">
+                    <TextBox x:Name="tbB" Background="LightGray" VerticalAlignment="Center" TextAlignment="Center" PreviewKeyDown="tb_PreviewKeyDown" />
+                </GroupBox>
+                <GroupBox Grid.Column="0" Grid.Row="1" Header="X:">
+                    <TextBox x:Name="tbX" Background="LightGray" VerticalAlignment="Center" TextAlignment="Center" PreviewKeyDown="tb_PreviewKeyDown" />
+                </GroupBox>
+                <GroupBox Grid.Column="1" Grid.Row="1" Header="Y:">
+                    <TextBox x:Name="tbY" Background="LightGray" VerticalAlignment="Center" TextAlignment="Center" PreviewKeyDown="tb_PreviewKeyDown" />
+                </GroupBox>
+            </Grid>
+        </GroupBox>
+        
+        <GroupBox Grid.Column="1" Header="Circle Pad">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <GroupBox Grid.Column="0" Grid.Row="0" Header="Left:">
+                    <TextBox x:Name="tbLeft" Background="LightGray" VerticalAlignment="Center" TextAlignment="Center" PreviewKeyDown="tb_PreviewKeyDown" />
+                </GroupBox>
+                <GroupBox Grid.Column="1" Grid.Row="0" Header="Right:">
+                    <TextBox x:Name="tbRight" Background="LightGray" VerticalAlignment="Center" TextAlignment="Center" PreviewKeyDown="tb_PreviewKeyDown" />
+                </GroupBox>
+                <GroupBox Grid.Column="0" Grid.Row="1" Header="Up:">
+                    <TextBox x:Name="tbUp" Background="LightGray" VerticalAlignment="Center" TextAlignment="Center" PreviewKeyDown="tb_PreviewKeyDown" />
+                </GroupBox>
+                <GroupBox Grid.Column="1" Grid.Row="1" Header="Down:">
+                    <TextBox x:Name="tbDown" Background="LightGray" VerticalAlignment="Center" TextAlignment="Center" PreviewKeyDown="tb_PreviewKeyDown" />
+                </GroupBox>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Column="2" Header="Misc">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <GroupBox Grid.Column="0" Grid.Row="0" Header="L:">
+                    <TextBox x:Name="tbL" Background="LightGray" VerticalAlignment="Center" TextAlignment="Center" PreviewKeyDown="tb_PreviewKeyDown" />
+                </GroupBox>
+                <GroupBox Grid.Column="1" Grid.Row="0" Header="R:">
+                    <TextBox x:Name="tbR" Background="LightGray" VerticalAlignment="Center" TextAlignment="Center" PreviewKeyDown="tb_PreviewKeyDown" />
+                </GroupBox>
+                <GroupBox Grid.Column="0" Grid.Row="1" Header="Start:">
+                    <TextBox x:Name="tbStart" Background="LightGray" VerticalAlignment="Center" TextAlignment="Center" PreviewKeyDown="tb_PreviewKeyDown" />
+                </GroupBox>
+                <GroupBox Grid.Column="1" Grid.Row="1" Header="Select:">
+                    <TextBox x:Name="tbSelect" Background="LightGray" VerticalAlignment="Center" TextAlignment="Center" PreviewKeyDown="tb_PreviewKeyDown" />
+                </GroupBox>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>

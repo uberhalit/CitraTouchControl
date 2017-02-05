@@ -1,0 +1,81 @@
+﻿<Window x:Class="CitraTouchControl.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CitraTouchControl"
+        mc:Ignorable="d"
+        Title="CitraTouchControl" SnapsToDevicePixels="True" Topmost="True" Height="1080" Width="860" AllowsTransparency="True" Background="#01FFFFFF" WindowStyle="None" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <!--<Window.Background>
+        <SolidColorBrush Color="White" Opacity="0.2"/>
+    </Window.Background>-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" x:Name="gMainGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="11*"/>
+                <RowDefinition Height="1.2*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.3*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="2.1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="0.3*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="bL" Grid.Row="1" Grid.Column="1" Style="{StaticResource InputButton}">
+                <Image x:Name="ibL" Source="Images/Button_L.png" SnapsToDevicePixels="True" TouchDown="controlButton_TouchDown" TouchUp="controlButton_TouchUp" TouchLeave="controlButton_TouchLeave"/>
+            </Button>
+            <Button x:Name="bR" Grid.Row="1" Grid.Column="7" Style="{StaticResource InputButton}">
+                <Image x:Name="ibR" Source="Images/Button_R.png" SnapsToDevicePixels="True" TouchDown="controlButton_TouchDown" TouchUp="controlButton_TouchUp" TouchLeave="controlButton_TouchLeave"/>
+            </Button>
+
+            <Button x:Name="bStart" Grid.Row="1" Grid.Column="3" Style="{StaticResource InputButton}">
+                <Image x:Name="ibStart" Source="Images/Button_Start.png" SnapsToDevicePixels="True" TouchDown="controlButton_TouchDown" TouchUp="controlButton_TouchUp" TouchLeave="controlButton_TouchLeave"/>
+            </Button>
+            <Button x:Name="bSelect" Grid.Row="1" Grid.Column="5" Style="{StaticResource InputButton}">
+                <Image x:Name="ibSelect" Source="Images/Button_Select.png" SnapsToDevicePixels="True" TouchDown="controlButton_TouchDown" TouchUp="controlButton_TouchUp" TouchLeave="controlButton_TouchLeave"/>
+            </Button>
+
+            <Button x:Name="bX" Grid.Row="3" Grid.Column="6" Style="{StaticResource InputButton}">
+                <Image x:Name="ibX" Source="Images/Button_X.png" SnapsToDevicePixels="True" TouchDown="controlButton_TouchDown" TouchUp="controlButton_TouchUp" TouchLeave="controlButton_TouchLeave" />
+            </Button>
+            <Button x:Name="bA" Grid.Row="4" Grid.Column="7" Style="{StaticResource InputButton}">
+                <Image x:Name="ibA" Source="Images/Button_A.png" SnapsToDevicePixels="True" TouchDown="controlButton_TouchDown" TouchUp="controlButton_TouchUp" TouchLeave="controlButton_TouchLeave"/>
+            </Button>
+            <Button x:Name="bB" Grid.Row="5" Grid.Column="6" Style="{StaticResource InputButton}">
+                <Image x:Name="ibB" Source="Images/Button_B.png" SnapsToDevicePixels="True" TouchDown="controlButton_TouchDown" TouchUp="controlButton_TouchUp" TouchLeave="controlButton_TouchLeave"/>
+            </Button>
+            <Button x:Name="bY" Grid.Row="4" Grid.Column="5" Style="{StaticResource InputButton}">
+                <Image x:Name="ibY" Source="Images/Button_Y.png" SnapsToDevicePixels="True" TouchDown="controlButton_TouchDown" TouchUp="controlButton_TouchUp" TouchLeave="controlButton_TouchLeave"/>
+            </Button>
+
+            <Button x:Name="bUp" Grid.Row="3" Grid.Column="2" Style="{StaticResource InputButton}">
+                <Image x:Name="ibUp" Source="Images/Button_Up.png" SnapsToDevicePixels="True" TouchDown="controlButton_TouchDown" TouchUp="controlButton_TouchUp" TouchLeave="controlButton_TouchLeave"/>
+            </Button>
+            <Button x:Name="bRight" Grid.Row="4" Grid.Column="3" Style="{StaticResource InputButton}">
+                <Image x:Name="ibRight" Source="Images/Button_Right.png" SnapsToDevicePixels="True" TouchDown="controlButton_TouchDown" TouchUp="controlButton_TouchUp" TouchLeave="controlButton_TouchLeave"/>
+            </Button>
+            <Button x:Name="bDown" Grid.Row="5" Grid.Column="2" Style="{StaticResource InputButton}">
+                <Image x:Name="ibDown" Source="Images/Button_Down.png" SnapsToDevicePixels="True" TouchDown="controlButton_TouchDown" TouchUp="controlButton_TouchUp" TouchLeave="controlButton_TouchLeave"/>
+            </Button>
+            <Button x:Name="bLeft" Grid.Row="4" Grid.Column="1" Style="{StaticResource InputButton}">
+                <Image x:Name="ibLeft" Source="Images/Button_Left.png" SnapsToDevicePixels="True" TouchDown="controlButton_TouchDown" TouchUp="controlButton_TouchUp" TouchLeave="controlButton_TouchLeave"/>
+            </Button>
+        </Grid>
+        <Button x:Name="bMenu" Grid.Row="1" Style="{StaticResource InputButton}">
+            <Image x:Name="ibMenu" Source="Images/Button_Menu.png" SnapsToDevicePixels="True" TouchDown="ibMenu_TouchDown" MouseDown="ibMenu_MouseDown"/>
+        </Button>
+    </Grid>
+</Window>

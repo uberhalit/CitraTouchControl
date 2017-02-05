@@ -1,0 +1,51 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="CitraTouchControl.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="A_KEY" Type="System.Int16" Scope="User">
+      <Value Profile="(Default)">65</Value>
+    </Setting>
+    <Setting Name="B_KEY" Type="System.Int16" Scope="User">
+      <Value Profile="(Default)">83</Value>
+    </Setting>
+    <Setting Name="X_KEY" Type="System.Int16" Scope="User">
+      <Value Profile="(Default)">90</Value>
+    </Setting>
+    <Setting Name="Y_KEY" Type="System.Int16" Scope="User">
+      <Value Profile="(Default)">88</Value>
+    </Setting>
+    <Setting Name="L_KEY" Type="System.Int16" Scope="User">
+      <Value Profile="(Default)">81</Value>
+    </Setting>
+    <Setting Name="R_KEY" Type="System.Int16" Scope="User">
+      <Value Profile="(Default)">87</Value>
+    </Setting>
+    <Setting Name="LEFT_KEY" Type="System.Int16" Scope="User">
+      <Value Profile="(Default)">37</Value>
+    </Setting>
+    <Setting Name="RIGHT_KEY" Type="System.Int16" Scope="User">
+      <Value Profile="(Default)">39</Value>
+    </Setting>
+    <Setting Name="UP_KEY" Type="System.Int16" Scope="User">
+      <Value Profile="(Default)">38</Value>
+    </Setting>
+    <Setting Name="DOWN_KEY" Type="System.Int16" Scope="User">
+      <Value Profile="(Default)">40</Value>
+    </Setting>
+    <Setting Name="START_KEY" Type="System.Int16" Scope="User">
+      <Value Profile="(Default)">77</Value>
+    </Setting>
+    <Setting Name="SELECT_KEY" Type="System.Int16" Scope="User">
+      <Value Profile="(Default)">78</Value>
+    </Setting>
+    <Setting Name="IsTouchEnabled" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="AreControlsHidden" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="KeyPressDuration" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">50</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

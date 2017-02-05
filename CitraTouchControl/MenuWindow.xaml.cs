@@ -22,6 +22,8 @@ namespace CitraTouchControl
                 bTouch.Content = "Disable Touch";
             if (GlobalVars.AreControlsHidden)
                 bControls.Content = "Show Controls";
+            if (GlobalVars.IsTapOnly)
+                bTap.Content = "Touch: Tap & Hold";
             bDuration.Content = "KeyPress: " + GlobalVars.KeyPressDuration + "ms";
         }
 
@@ -86,13 +88,22 @@ namespace CitraTouchControl
         }
 
         /// <summary>
-        /// Shows key binding window.
+        /// Toggle TapMode.
         /// </summary>
-        private void bKeys_Click(object sender, RoutedEventArgs e)
+        private void bTap_Click(object sender, RoutedEventArgs e)
         {
-            KeysWindow kW = new KeysWindow();
-            kW.Owner = this;
-            kW.Show();
+            if (!GlobalVars.IsTapOnly)
+            {
+                bTap.Content = "Touch: Tap & Hold";
+                Properties.Settings.Default.IsTapOnly = true;
+                GlobalVars.IsTapOnly = true;
+            }
+            else
+            {
+                bTap.Content = "Touch: Tap only";
+                Properties.Settings.Default.IsTapOnly = false;
+                GlobalVars.IsTapOnly = false;
+            }
         }
 
         /// <summary>
@@ -114,6 +125,16 @@ namespace CitraTouchControl
                 GlobalVars.KeyPressDuration -= 5;
             Properties.Settings.Default.KeyPressDuration = GlobalVars.KeyPressDuration;
             bDuration.Content = "KeyPress: " + GlobalVars.KeyPressDuration + "ms";
+        }
+
+        /// <summary>
+        /// Shows key binding window.
+        /// </summary>
+        private void bKeys_Click(object sender, RoutedEventArgs e)
+        {
+            KeysWindow kW = new KeysWindow();
+            kW.Owner = this;
+            kW.Show();
         }
 
         /// <summary>

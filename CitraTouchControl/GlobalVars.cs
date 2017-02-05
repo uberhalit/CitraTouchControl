@@ -19,5 +19,6 @@
         internal static bool IsTouchEnabled = false;
         internal static bool AreControlsHidden = false;
         internal static int KeyPressDuration = 50;
+        internal static bool IsTapOnly = false;
     }
 }

@@ -202,5 +202,17 @@ namespace CitraTouchControl.Properties {
                 this["KeyPressDuration"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IsTapOnly {
+            get {
+                return ((bool)(this["IsTapOnly"]));
+            }
+            set {
+                this["IsTapOnly"] = value;
+            }
+        }
     }
 }

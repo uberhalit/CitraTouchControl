@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CitraTouchControl"
         mc:Ignorable="d"
-        Title="CitraTouchControl - Menu" Height="450" Width="400" Topmost="True" WindowStartupLocation="CenterOwner" WindowStyle="ToolWindow" Background="LightGray" Loaded="Window_Loaded" Closing="Window_Closing">
+        Title="CitraTouchControl - Menu" Height="475" Width="400" Topmost="True" WindowStartupLocation="CenterOwner" WindowStyle="ToolWindow" Background="LightGray" Loaded="Window_Loaded" Closing="Window_Closing">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -20,15 +20,17 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <Button x:Name="bResize" Grid.Row="0" Content="Readjust Overlay" FontSize="24" FontWeight="Bold" Margin="10,5,10,5" BorderThickness="1" Focusable="False" Click="bResize_Click" Grid.ColumnSpan="3"/>
-        <Button x:Name="bTouch" Grid.Row="1" Content="Enable Touch" FontSize="24" FontWeight="Bold" Margin="10,5,10,5" BorderThickness="1" Focusable="False" Click="bTouch_Click" Grid.ColumnSpan="3"/>
-        <Button x:Name="bControls" Grid.Row="2" Content="Hide Controls" FontSize="24" FontWeight="Bold" Margin="10,5,10,5" BorderThickness="1" Focusable="False" Click="bControls_Click" Grid.ColumnSpan="3"/>
-        <Button x:Name="bKeys" Grid.Row="3" Content="Configurate Keys" FontSize="24" FontWeight="Bold" Margin="10,5,10,5" BorderThickness="1" Focusable="False" Click="bKeys_Click" Grid.ColumnSpan="3"/>
+        <Button x:Name="bResize" Grid.Row="0" Grid.Column="0" Content="Readjust Overlay" FontSize="24" FontWeight="Bold" Margin="10,5,10,5" BorderThickness="1" Focusable="False" Click="bResize_Click" Grid.ColumnSpan="3"/>
+        <Button x:Name="bTouch" Grid.Row="1" Grid.Column="0" Content="Enable Touch" FontSize="24" FontWeight="Bold" Margin="10,5,10,5" BorderThickness="1" Focusable="False" Click="bTouch_Click" Grid.ColumnSpan="3"/>
+        <Button x:Name="bControls" Grid.Row="2" Grid.Column="0" Content="Hide Controls" FontSize="24" FontWeight="Bold" Margin="10,5,10,5" BorderThickness="1" Focusable="False" Click="bControls_Click" Grid.ColumnSpan="3"/>
+        <Button x:Name="bTap" Grid.Row="3" Grid.Column="0" Content="Touch: Tap only" FontSize="24" FontWeight="Bold" Margin="10,5,10,5" BorderThickness="1" Focusable="False" Grid.ColumnSpan="3" Click="bTap_Click"/>
         <Button x:Name="bDPlus" Grid.Row="4" Grid.Column="0" Content="+" FontSize="24" FontWeight="Bold" Margin="10,5,5,5" BorderThickness="1" Focusable="False" Click="bDPlus_Click"/>
-        <Button x:Name="bDuration" Grid.Row="4" Grid.Column="1" Content="KeyPress: 60ms" FontSize="24" FontWeight="Bold" Margin="5,5,5,5" BorderThickness="1" Focusable="False" />
+        <Button x:Name="bDuration" Grid.Row="4" Grid.Column="1" Content="KeyPress: 50ms" FontSize="24" FontWeight="Bold" Margin="5,5,5,5" BorderThickness="1" Focusable="False" />
         <Button x:Name="bDMinus" Grid.Row="4" Grid.Column="2" Content="-" FontSize="24" FontWeight="Bold" Margin="5,5,10,5" BorderThickness="1" Focusable="False" Click="bDMinus_Click" />
-        <Button x:Name="bExit" Grid.Row="5" Content="Exit CitraTouchControl" FontSize="24" FontWeight="Bold" Foreground="DarkRed" Margin="10,5,10,5" BorderThickness="1" Focusable="False" Click="bExit_Click" Grid.ColumnSpan="3"/>
-        <Button x:Name="bClose" Grid.Row="6" Content="Close Window" FontSize="24" FontWeight="Bold" Margin="10,5,10,5" BorderThickness="1" Focusable="False" Click="bClose_Click" Grid.ColumnSpan="3"/>
+        <Button x:Name="bKeys" Grid.Row="5" Grid.Column="0" Content="Configurate Keys" FontSize="24" FontWeight="Bold" Margin="10,5,10,5" BorderThickness="1" Focusable="False" Click="bKeys_Click" Grid.ColumnSpan="3"/>
+        <Button x:Name="bExit" Grid.Row="6" Grid.Column="0" Content="Exit CitraTouchControl" FontSize="24" FontWeight="Bold" Foreground="DarkRed" Margin="10,5,10,5" BorderThickness="1" Focusable="False" Click="bExit_Click" Grid.ColumnSpan="3"/>
+        <Button x:Name="bClose" Grid.Row="7" Grid.Column="0" Content="Close Window" FontSize="24" FontWeight="Bold" Margin="10,5,10,5" BorderThickness="1" Focusable="False" Click="bClose_Click" Grid.ColumnSpan="3"/>
     </Grid>
 </Window>

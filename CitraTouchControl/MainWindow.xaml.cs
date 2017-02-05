@@ -72,6 +72,7 @@ namespace CitraTouchControl
                 GlobalVars.AreControlsHidden = true;
                 ToggleControls(true);
             }
+            GlobalVars.IsTapOnly = Properties.Settings.Default.IsTapOnly;
             GlobalVars.KeyPressDuration = Properties.Settings.Default.KeyPressDuration;
         }
 
@@ -88,6 +89,9 @@ namespace CitraTouchControl
         /// </summary>
         private void controlButton_TouchUp(object sender, TouchEventArgs e)
         {
+            // ignore TouchUp in TapOnly mode
+            if (GlobalVars.IsTapOnly)
+                return;
             e.Handled = true;
             ControlButtonUp(sender);
         }
@@ -97,6 +101,9 @@ namespace CitraTouchControl
         /// </summary>
         private void controlButton_TouchLeave(object sender, TouchEventArgs e)
         {
+            // ignore TouchLeave in TapOnly mode
+            if (GlobalVars.IsTapOnly)
+                return;
             ControlButtonUp(sender);
         }
 
@@ -140,16 +147,24 @@ namespace CitraTouchControl
             // actually send keydown
             SendMessage(citraMainControlHwnd, WM_KEYDOWN, key, IntPtr.Zero);
 
-            // add pressed key to list
-            if (!pressedControls.Contains(key))
-                pressedControls.Add(key);
+            // if TapMode is tap only then send KeyUp directly
+            if (GlobalVars.IsTapOnly)
+            {
+                SendButtonUp(key);
+            }
+            else
+            {
+                // add pressed key to list
+                if (!pressedControls.Contains(key))
+                    pressedControls.Add(key);
+            }
         }
 
         /// <summary>
         /// Control leave handler which supports asynchronous waiting.
         /// </summary>
         /// <param name="sender">The caller UI element.</param>
-        private async void ControlButtonUp(object sender)
+        private void ControlButtonUp(object sender)
         {
             // get calling button
             var button = (sender as System.Windows.Controls.Image);
@@ -165,6 +180,15 @@ namespace CitraTouchControl
                 return;
             pressedControls.Remove(key);
 
+            SendButtonUp(key);
+        }
+
+        /// <summary>
+        /// Sends a KeyButtonUp after a short delay.
+        /// </summary>
+        /// <param name="key">The IntPtr of the key.</param>
+        private async void SendButtonUp(IntPtr key)
+        {
             // wait 50ms asynchronously, then send keyup of selected button
             await Task.Delay(GlobalVars.KeyPressDuration);
             SendMessage(citraMainControlHwnd, WM_KEYUP, key, IntPtr.Zero);
@@ -332,37 +356,6 @@ namespace CitraTouchControl
         #region UNUSED
 
         /*
-        private const int WS_EX_TRANSPARENT = 0x00000020;
-        private const int GWL_EXSTYLE = (-20);
-
-        [DllImport("user32.dll")]
-        private static extern Int32 GetWindowLong(IntPtr hwnd, int index);
-
-        [DllImport("user32.dll")]
-        private static extern Int32 SetWindowLong(IntPtr hwnd, int index, int newStyle);
-
-        public static void SetWindowExTransparent(IntPtr hwnd)
-        {
-            var extendedStyle = GetWindowLong(hwnd, GWL_EXSTYLE);
-            SetWindowLong(hwnd, GWL_EXSTYLE, extendedStyle | WS_EX_TRANSPARENT);
-        }
-
-        public static void SetWindowExNormal(IntPtr hwnd)
-        {
-            var extendedStyle = GetWindowLong(hwnd, GWL_EXSTYLE);
-            SetWindowLong(hwnd, GWL_EXSTYLE, extendedStyle & ~WS_EX_TRANSPARENT);
-        }
-
-        /// <summary>
-        /// Make window clickthrough and hittest invisible.
-        /// </summary>
-        protected override void OnSourceInitialized(EventArgs e)
-        {
-            base.OnSourceInitialized(e);
-            var hwnd = new System.Windows.Interop.WindowInteropHelper(this).Handle;
-            SetWindowExTransparent(hwnd);
-        }
-
         /// <summary>
         /// Uses FindWindowEx() to recursively search for a child window with the given class and/or title.
         /// </summary>

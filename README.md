@@ -11,7 +11,7 @@ It will auto adjust to match Citra position and size, onscreen controls' keys ca
 ![CitraTouchControl](https://i.imgur.com/u38o2VN.png)
 ## Requirements ##
 * Citra-Qt build ([grab the latest bleeding edge build here](https://github.com/citra-emu/citra-bleeding-edge/releases)) 
-* Windows PC which runs Citra at decent (>30) framerates
+* Windows PC with Aero (Windows 7 or later) which runs Citra at decent (>30) framerates
 * Mobile device which can handle a massive input network-stream
 * fast (>75Mbps) network connection between the host-PC and your mobile device (ideally PC->LAN->Router->5G WLAN->Mobile device)
 

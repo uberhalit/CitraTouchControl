@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CitraTouchControl"
         mc:Ignorable="d"
-        Title="CitraTouchControl - Configurate Keys" Height="200" Width="700" Topmost="True" WindowStartupLocation="CenterOwner" WindowStyle="ToolWindow" Background="LightGray" FontSize="18" Loaded="Window_Loaded">
+        Title="CitraTouchControl - Configure Keys" Height="200" Width="700" Topmost="True" WindowStartupLocation="CenterOwner" WindowStyle="ToolWindow" Background="LightGray" FontSize="18" Loaded="Window_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>

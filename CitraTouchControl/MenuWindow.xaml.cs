@@ -121,7 +121,7 @@ namespace CitraTouchControl
         /// </summary>
         private void bDMinus_Click(object sender, RoutedEventArgs e)
         {
-            if (GlobalVars.KeyPressDuration > 20)
+            if (GlobalVars.KeyPressDuration > 10)
                 GlobalVars.KeyPressDuration -= 5;
             Properties.Settings.Default.KeyPressDuration = GlobalVars.KeyPressDuration;
             bDuration.Content = "KeyPress: " + GlobalVars.KeyPressDuration + "ms";

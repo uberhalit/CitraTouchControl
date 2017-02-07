@@ -7,7 +7,6 @@ This is useful for remote play sessions with Citra from a mobile device or if yo
 It will auto adjust to match Citra position and size, onscreen controls' keys can be modified and touch/controls can be toggled on and off.
 
 ![#c5f015](http://placehold.it/15/c5f015/000000?text=+) **[See it in Action](http://a.pomf.cat/rqiutm.webm)**
-
 ![CitraTouchControl](https://i.imgur.com/kQHSBfl.png)
 ## Requirements ##
 * Citra-Qt build ([grab the latest bleeding edge build here](https://github.com/citra-emu/citra-bleeding-edge/releases)) 
@@ -25,13 +24,13 @@ It will auto adjust to match Citra position and size, onscreen controls' keys ca
 
 ## Configuration ##
 1. [Enable RDP on your host PC](http://www.howtogeek.com/howto/windows-vista/turn-on-remote-desktop-in-windows-vista/)
-  * Make sure services "TermService" and "SessionEnv" are running if you encounter any problems
+  * Make sure services "TermService" and "SessionEnv" are running and **restart your PC** if you encounter any problems
 2. Start Citra and CitraTouchControl, press the menu button on CitraTouchControl (bottom one) to bring up the configuration menu
   1. Press "Configure Keys" to bring up the next window and set all your controls there
 3. Install [Microsoft Remote Desktop Beta](https://play.google.com/store/apps/details?id=com.microsoft.rdc.android.beta) on your mobile device
 4. Start it and add a new Desktop connection to your host PC
   1. Insert the local IP and Windows credentials of your host PC
-  2. Enable "Custom display resolution" and set it to "788x1260"
+  2. Enable "Custom display resolution" and set it to "788x1260" (or lower if possible)
   3. If you want sound, then set Sound to "Play sound on device" (this will require additional bandwidth)
 ![Microsoft Remote Desktop Beta](https://i.imgur.com/0RPYSDD.png)
 
@@ -51,7 +50,7 @@ It will auto adjust to match Citra position and size, onscreen controls' keys ca
 | Android | [Microsoft Remote Desktop Beta](https://play.google.com/store/apps/details?id=com.microsoft.rdc.android.beta) | **_Yes_** |
 | Android | [AccessToGo RDP/Remote Desktop](https://play.google.com/store/apps/details?id=com.ericom.accesstogobyericom) | Yes | buggy, annoying touch-feedback, no network level auth
 | Android | [Microsoft Remote Desktop](https://play.google.com/store/apps/details?id=com.microsoft.rdc.android) | no | no portrait mode |
-| Android | [TeamViewer](https://play.google.com/store/apps/details?id=com.teamviewer.teamviewer.market.mobile) | no | no portrait mode, distorted sound |
+| Android | [TeamViewer](https://play.google.com/store/apps/details?id=com.teamviewer.teamviewer.market.mobile) | no | no portrait mode, no scaling, distorted sound |
 | Android | [RDP Remote Desktop aFreeRDP](https://play.google.com/store/apps/details?id=com.freerdp.afreerdp) | no | no (multi-)touch |
 | Android | [RDP Remote Desktop Connection](https://play.google.com/store/apps/details?id=com.thinstuff.rdc) | no | no (multi-)touch |
 | Android | [aRDP Pro: Secure RDP Client](https://play.google.com/store/apps/details?id=com.iiordanov.aRDP) | no | no (multi-)touch |
@@ -59,6 +58,7 @@ It will auto adjust to match Citra position and size, onscreen controls' keys ca
 | Android | [Remote Desktop Manager](https://play.google.com/store/apps/details?id=com.devolutions.remotedesktopmanager) | no | no (multi-)touch |
 | Android | [GoToMyPC (Remote Desktop)](https://play.google.com/store/apps/details?id=com.citrixonline.gotomypc) | no | no (multi-)touch |
 | Android | [Parallels Client (legacy)](https://play.google.com/store/apps/details?id=com.tux.client) | no | no (multi-)touch, no scaling |
+| Android | [Moonlight Game Streaming (root)](https://play.google.com/store/apps/details?id=com.limelight.root) | no | no (multi-)touch, no portrait mode, no scaling |
 | Android | [Remotix VNC RDP Remote Desktop](https://play.google.com/store/apps/details?id=com.nulana.android.remotix) | no | no (multi-)touch, slow |
 | Android | [Splashtop 2 Remote Desktop](https://play.google.com/store/apps/details?id=com.splashtop.remote.pad.v2) | no | slow, no portrait mode |
 | Android | [NoMachine](https://play.google.com/store/apps/details?id=com.nomachine.nxplayer) | no | slow, no portrait mode |
@@ -72,6 +72,7 @@ If you find any Remote Desktop App which is fast enough for this kind of usage a
 ## Limitations ##
 * Due to the fact that Microsofts RDP display driver does not support OpenGL 3.3 Citra will not work if you start it over a RDP-session. Start Citra and load your game **BEFORE** you connect via RDP.
 * Configuring keys only works with a physical keyboard; it will not work via Remote Desktop from a mobile device.
+* Onscreen controls react to touch only, mouseclicks will not work (menu button is the exception)
 * Overlay only checks for a process called "citra-qt.exe". If your build of Citra is called something else then you'll have to rename it.
 * Overlay will not adjust itself after startup. Use the "Readjust Overlay" option in menu if you move/resize Citra later.
 * Overlay will not detect a restart of Citra. You will have to restart CitraTouchControl manually if you close and reopen Citra.

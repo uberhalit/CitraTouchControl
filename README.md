@@ -18,21 +18,26 @@ It will auto adjust to match Citra position and size, onscreen controls' keys ca
 ## Usage ##
 1. Start Citra and load up your game.
 2. Connect to your host-PC via the Remote Desktop app on your mobile device.
-3. Start CitraTouchControl via remote control.
+3. Start CitraTouchControl via remote control, lower KeyPress duration according to your network delay.
 4. Enjoy playing 3DS games on your tablet/phone.
 
 
 ## Configuration ##
 1. [Enable RDP on your host PC](http://www.howtogeek.com/howto/windows-vista/turn-on-remote-desktop-in-windows-vista/)
   * Make sure services "TermService" and "SessionEnv" are running and **restart your PC** if you encounter any problems
+  * Some Antivirus solutions like Kaspersky may interfere even with local RD sessions
 2. Start Citra and CitraTouchControl, press the menu button on CitraTouchControl (bottom one) to bring up the configuration menu
   1. Press "Configure Keys" to bring up the next window and set all your controls there
+  2. Lower KeyPress delay according to your network delay
 3. Install [Microsoft Remote Desktop Beta](https://play.google.com/store/apps/details?id=com.microsoft.rdc.android.beta) on your mobile device
 4. Start it and add a new Desktop connection to your host PC
   1. Insert the local IP and Windows credentials of your host PC
-  2. Enable "Custom display resolution" and set it to "788x1260" (or lower if possible)
+  2. Enable "Custom display resolution" and set it to the lowest one available (100% sacling)
   3. If you want sound, then set Sound to "Play sound on device" (this will require additional bandwidth)
+  4. On the first connection press the menu button of the app (the one in the top bar with the 3 lines) and enable Touch in the fly-in-window on the right
+
 ![Microsoft Remote Desktop Beta](https://i.imgur.com/0RPYSDD.png)
+![Microsoft Remote Desktop Beta - Menu](https://i.imgur.com/5EHbTZ4.png)
 
 
 ## Options ##
@@ -56,7 +61,7 @@ It will auto adjust to match Citra position and size, onscreen controls' keys ca
 | Android | [aRDP Pro: Secure RDP Client](https://play.google.com/store/apps/details?id=com.iiordanov.aRDP) | no | no (multi-)touch |
 | Android | [Jump Desktop (RDP & VNC)](https://play.google.com/store/apps/details?id=com.p5sys.android.jump) | no | no (multi-)touch |
 | Android | [Remote Desktop Manager](https://play.google.com/store/apps/details?id=com.devolutions.remotedesktopmanager) | no | no (multi-)touch |
-| Android | [GoToMyPC (Remote Desktop)](https://play.google.com/store/apps/details?id=com.citrixonline.gotomypc) | no | no (multi-)touch |
+| Android | [GoToMyPC (Remote Desktop)](https://play.google.com/store/apps/details?id=com.citrixonline.gotomypc) | no | no (multi-)touch, no scaling |
 | Android | [Parallels Client (legacy)](https://play.google.com/store/apps/details?id=com.tux.client) | no | no (multi-)touch, no scaling |
 | Android | [Moonlight Game Streaming (root)](https://play.google.com/store/apps/details?id=com.limelight.root) | no | no (multi-)touch, no portrait mode, no scaling |
 | Android | [Remotix VNC RDP Remote Desktop](https://play.google.com/store/apps/details?id=com.nulana.android.remotix) | no | no (multi-)touch, slow |
@@ -77,4 +82,4 @@ If you find any Remote Desktop App which is fast enough for this kind of usage a
 * Overlay will not adjust itself after startup. Use the "Readjust Overlay" option in menu if you move/resize Citra later.
 * Overlay will not detect a restart of Citra. You will have to restart CitraTouchControl manually if you close and reopen Citra.
 * If Citra runs in admin mode you'll have to start CitraTouchControl as admin too.
-* If your connection has lag >50ms CitraTouchControl will eventually hold KeyDown for too long which will result in recognition of multiple KeyPresses. Try the "Touch: Tap only" option in menu or reduce the KeyPress duration.
+* If your connection has lag >50ms CitraTouchControl will eventually hold KeyDown for too long which will result in recognition of multiple KeyPresses. Try the "Touch: Tap only" option in menu or reduce the KeyPress duration to ~20ms.

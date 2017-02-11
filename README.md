@@ -6,8 +6,10 @@ This is useful for remote play sessions with Citra from a mobile device or if yo
 
 It will auto adjust to match Citra position and size, onscreen controls' keys can be modified and touch/controls can be toggled on and off.
 
+It further features "savegame/bookmark replacement"; a very basic savestate system. Only useful in games which allow you to create bookmarks like Fire Emblem. Create a bookmark, save it via CitraTouchControl, overwrite it and load it back in the case you screw up later.
+
 ![#c5f015](http://placehold.it/15/c5f015/000000?text=+) **[See it in Action](http://a.pomf.cat/rqiutm.webm)**
-![CitraTouchControl](https://i.imgur.com/kQHSBfl.png)
+![CitraTouchControl](https://i.imgur.com/OT2fQNq.png)
 ## Requirements ##
 * Citra-Qt build ([grab the latest bleeding edge build here](https://github.com/citra-emu/citra-bleeding-edge/releases)) 
 * Windows PC with Aero (Windows 7 or later) which runs Citra at decent (>30) framerates
@@ -32,7 +34,7 @@ It will auto adjust to match Citra position and size, onscreen controls' keys ca
 3. Install [Microsoft Remote Desktop Beta](https://play.google.com/store/apps/details?id=com.microsoft.rdc.android.beta) on your mobile device
 4. Start it and add a new Desktop connection to your host PC
   1. Insert the local IP and Windows credentials of your host PC
-  2. Enable "Custom display resolution" and set it to the lowest one available (100% sacling)
+  2. Enable "Custom display resolution" and set it to the lowest one available (100% scaling)
   3. If you want sound, then set Sound to "Play sound on device" (this will require additional bandwidth)
   4. On the first connection press the menu button of the app (the one in the top bar with the 3 lines) and enable Touch in the fly-in-window on the right
 
@@ -41,8 +43,10 @@ It will auto adjust to match Citra position and size, onscreen controls' keys ca
 
 
 ## Options ##
+* Save Savegames: zips up all current savegames. Use this if you want to back up bookmarks/saves before overwriting them.
+* Load Savegames: loads all previously zipped savegames/bookmarks back into Citra. Use this if you want to go back to a previous one.
 * Readjust Overlay: will get position and size of Citra again and place overlay accordingly. Use this if the overlay is off.
-* Enable Touch: will make the overlay "click through" (buttons will still work)
+* Enable Touch: will make the overlay "click through" (buttons will still work).
 * Hide controls: will remove all controls except the menu button from the overlay. Use this and enabled touch for a stylus like experience.
 * Touch: Tap only: will make all onscreen buttons "static". If you press a button, it will send KeyDown and KeyUp. Holding a button will not send multiple keystrokes anymore. Use this if you encounter involuntary KeyPresses (mostly due to lag).
 * Keypress: adjust the duration a Key keeps being pressed after you removed your finger from the button. Reduce this if you encounter involuntary KeyPresses (mostly due to lag) or increase it if buttons are not recognized anymore.
@@ -78,7 +82,8 @@ If you find any Remote Desktop App which is fast enough for this kind of usage a
 * Due to the fact that Microsofts RDP display driver does not support OpenGL 3.3 Citra will not work if you start it over a RDP-session. Start Citra and load your game **BEFORE** you connect via RDP.
 * Configuring keys only works with a physical keyboard; it will not work via Remote Desktop from a mobile device.
 * Onscreen controls react to touch only, mouseclicks will not work (menu button is the exception)
-* Overlay only checks for a process called "citra-qt.exe". If your build of Citra is called something else then you'll have to rename it.
+* Loading savegames only affect the game if it gets reloaded (Citra -> File -> Load File...) afterwards.
+* Overlay only checks for a process called "citra-qt.exe". If your build of Citra is called something else, then you'll have to rename it.
 * Overlay will not adjust itself after startup. Use the "Readjust Overlay" option in menu if you move/resize Citra later.
 * Overlay will not detect a restart of Citra. You will have to restart CitraTouchControl manually if you close and reopen Citra.
 * If Citra runs in admin mode you'll have to start CitraTouchControl as admin too.

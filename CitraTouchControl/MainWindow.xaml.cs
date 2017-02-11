@@ -1,5 +1,9 @@
 ﻿using System;
+using System.IO;
+using System.Linq;
 using System.Windows;
+using System.Threading;
+using System.Management;
 using System.Diagnostics;
 using System.Windows.Media;
 using System.Windows.Input;
@@ -11,13 +15,25 @@ namespace CitraTouchControl
 {
     public partial class MainWindow : Window
     {
+        internal Mutex mutex;
         internal bool isMenuWindow = false;
+        internal string userPath;
         private static IntPtr citraHwnd = IntPtr.Zero;
         private static IntPtr citraMainControlHwnd = IntPtr.Zero;
         private List<IntPtr> pressedControls = new List<IntPtr>();
         
         public MainWindow()
         {
+            // check if we are the only instance of CitraTouchControl
+            bool isNew = false;
+            mutex = new Mutex(true, "CitraTouchControl", out isNew);
+            if (!isNew)
+            {
+                MessageBox.Show(this, "ERROR: There is already an instance of CitraTouchControl running.", "CitraTouchControl");
+                Environment.Exit(0);
+            }
+            GC.KeepAlive(mutex);
+
             InitializeComponent();
         }
 
@@ -32,6 +48,7 @@ namespace CitraTouchControl
             }
             // get citra process handle
             citraHwnd = processes[0].MainWindowHandle;
+
             // check if citra is minimized
             if (IsIconic(citraHwnd))
             {
@@ -45,6 +62,18 @@ namespace CitraTouchControl
                 // active citra window is console
                 MessageBox.Show(this, "ERROR: Active Citra window not Qt-GUI!\nPlease bring the Citra Qt-GUI to the front first.", "CitraTouchControl");
                 Environment.Exit(0);
+            }
+
+            // get Citra savegame folder
+            userPath = Path.Combine(Path.GetDirectoryName(GetProcessPath(processes[0])), "user\\sdmc");
+            if (!Directory.Exists(userPath))
+            {
+                userPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Citra\\sdmc");
+                if (!Directory.Exists(userPath))
+                {
+                    MessageBox.Show(this, "WARNING: Savegame folder could not be located!\nSavestate functionality will not work.", "CitraTouchControl");
+                    userPath = null;
+                }
             }
 
             ResizeOverlay();
@@ -74,6 +103,11 @@ namespace CitraTouchControl
             }
             GlobalVars.IsTapOnly = Properties.Settings.Default.IsTapOnly;
             GlobalVars.KeyPressDuration = Properties.Settings.Default.KeyPressDuration;
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            mutex.ReleaseMutex();
         }
 
         /// <summary>
@@ -306,6 +340,27 @@ namespace CitraTouchControl
         internal void ToggleControls(bool hide)
         {
             gMainGrid.Visibility = hide ? Visibility.Collapsed : Visibility.Visible;
+        }
+
+        /// <summary>
+        /// Retrieves the full path to the executable of a process.
+        /// </summary>
+        /// <param name="process">The process.</param>
+        /// <returns></returns>
+        internal static string GetProcessPath(Process process)
+        {
+            string MethodResult = "";
+            string Query = "SELECT ExecutablePath FROM Win32_Process WHERE ProcessId = " + process.Id;
+
+            using (ManagementObjectSearcher mos = new ManagementObjectSearcher(Query))
+            {
+                using (ManagementObjectCollection moc = mos.Get())
+                {
+                    string ExecutablePath = (from mo in moc.Cast<ManagementObject>() select mo["ExecutablePath"]).First().ToString();
+                    MethodResult = ExecutablePath;
+                }
+            }
+            return MethodResult;
         }
 
         #region IMPORTS

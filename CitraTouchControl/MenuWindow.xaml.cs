@@ -1,11 +1,14 @@
 ﻿using System;
+using System.IO;
 using System.Windows;
+using System.IO.Compression;
 
 namespace CitraTouchControl
 {
     public partial class MenuWindow : Window
     {
         internal MainWindow mainWindow;
+        internal string savePath;
 
         public MenuWindow(MainWindow mW)
         {
@@ -25,6 +28,15 @@ namespace CitraTouchControl
             if (GlobalVars.IsTapOnly)
                 bTap.Content = "Touch: Tap & Hold";
             bDuration.Content = "KeyPress: " + GlobalVars.KeyPressDuration + "ms";
+            if (mainWindow.userPath == null)
+            {
+                bSave.IsEnabled = false;
+                bLoad.IsEnabled = false;
+            }
+            else
+            {
+                savePath = Path.Combine(Path.GetDirectoryName(mainWindow.userPath), "save01.zip");
+            }
         }
 
         /// <summary>
@@ -35,6 +47,60 @@ namespace CitraTouchControl
             mainWindow.isMenuWindow = false;
             // gets saved in C:\Users\*USER*\AppData\Local\CitraTouchControl\
             Properties.Settings.Default.Save();
+        }
+
+        /// <summary>
+        /// Saves the current savestate.
+        /// </summary>
+        private void bSave_Click(object sender, RoutedEventArgs e)
+        {
+            if (File.Exists(savePath))
+            {
+                var result = MessageBox.Show(this, "WARNING: Do you really wish to overwrite the last savegames?",
+                    "CitraTouchControl", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.No)
+                    return;
+                File.Delete(savePath);
+            }
+            try
+            {
+                ZipFile.CreateFromDirectory(mainWindow.userPath, savePath, CompressionLevel.Fastest, false);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, "EXCEPTION: Error while trying to save savegames.\n" + ex.Message, "CitraTouchControl", MessageBoxButton.OK);
+            }
+        }
+
+        /// <summary>
+        /// Loads the current savestate.
+        /// </summary>
+        private void bLoad_Click(object sender, RoutedEventArgs e)
+        {
+            if (!File.Exists(savePath))
+                return;
+            var result = MessageBox.Show(this, "WARNING: Do you really wish to overwrite the current savegames?",
+                "CitraTouchControl", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.No)
+                return;
+            try
+            {
+                // delete all currently existing files which will be extracted from zip as ZipFile.ExtractToDirectory() can not overwrite any files...
+                using (ZipArchive zipArchive = ZipFile.OpenRead(savePath))
+                {
+                    foreach (ZipArchiveEntry entry in zipArchive.Entries)
+                    {
+                        var path = Path.Combine(mainWindow.userPath, entry.FullName);
+                        if (File.Exists(path))
+                            File.Delete(path);
+                    }
+                }
+                ZipFile.ExtractToDirectory(savePath, mainWindow.userPath);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, "EXCEPTION: Error while trying to load savegames.\n" + ex.Message, "CitraTouchControl", MessageBoxButton.OK);
+            }
         }
 
         /// <summary>

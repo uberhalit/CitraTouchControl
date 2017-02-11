@@ -5,10 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CitraTouchControl"
         mc:Ignorable="d"
-        Title="CitraTouchControl" SnapsToDevicePixels="True" Topmost="True" Height="1080" Width="860" AllowsTransparency="True" Background="#01FFFFFF" WindowStyle="None" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
-    <!--<Window.Background>
-        <SolidColorBrush Color="White" Opacity="0.2"/>
-    </Window.Background>-->
+        Title="CitraTouchControl" SnapsToDevicePixels="True" Topmost="True" Height="1080" Width="860" AllowsTransparency="True" Background="#01FFFFFF" WindowStyle="None" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" Closing="Window_Closing">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25*"/>

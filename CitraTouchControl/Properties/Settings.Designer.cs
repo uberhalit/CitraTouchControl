@@ -193,7 +193,7 @@ namespace CitraTouchControl.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        [global::System.Configuration.DefaultSettingValueAttribute("30")]
         public int KeyPressDuration {
             get {
                 return ((int)(this["KeyPressDuration"]));

@@ -240,13 +240,17 @@ namespace CitraTouchControl
             if (citraMainControlHwnd == IntPtr.Zero)
             {
                 citraMainControlHwnd = FindWindowEx(citraHwnd, IntPtr.Zero, "Qt5QWindowIcon", "centralwidgetWindow");
-                //citraMainControlHwnd = FindChildWindow(windowHandle, "Qt5QWindowIcon", "centralwidgetWindow");
-                //citraMainControlHwnd = FindChildWindow(windowHandle, "Qt5QWindowIcon", "GRenderWindowClassWindow");
-                //citraMainControlHwnd = FindChildWindow(windowHandle, "Qt5QWindowOwnDCIcon", null);
+                //citraMainControlHwnd = FindChildWindow(citraHwnd, IntPtr.Zero, "Qt5QWindowIcon", "centralwidgetWindow");
+                //citraMainControlHwnd = FindChildWindow(citraHwnd, IntPtr.Zero, "Qt5QWindowIcon", "GRenderWindowClassWindow");
                 if (citraMainControlHwnd == IntPtr.Zero)
                 {
-                    MessageBox.Show(this, "ERROR: Could not get mainControlHandle!\nPlease try to restart Citra and this application.", "CitraTouchControl");
-                    return key;
+                    citraMainControlHwnd = FindChildWindow(citraHwnd, IntPtr.Zero, "Qt5QWindowOwnDCIcon", null);
+                    //citraMainControlHwnd = FindChildWindow(citraHwnd, IntPtr.Zero, "Qt5QWindowOwnDCIcon", "Citra");
+                    if (citraMainControlHwnd == IntPtr.Zero)
+                    {
+                        MessageBox.Show(this,"ERROR: Could not get mainControlHandle!\nPlease try to restart Citra and this application.", "CitraTouchControl");
+                        return key;
+                    }
                 }
             }
 
@@ -363,6 +367,33 @@ namespace CitraTouchControl
             return MethodResult;
         }
 
+        /// <summary>
+        /// Uses FindWindowEx() to recursively search for a child window with the given class and/or title,
+        /// starting after a specified child window.
+        /// If lpszClass is null, it will match any class name. It's not case-sensitive.
+        /// If lpszTitle is null, it will match any window title.
+        /// </summary>
+        public static IntPtr FindChildWindow(IntPtr hwndParent, IntPtr hwndChildAfter, string lpszClass, string lpszTitle)
+        {
+            // Try to find a match.
+            IntPtr hwnd = FindWindowEx(hwndParent, IntPtr.Zero, lpszClass, lpszTitle);
+            if (hwnd == IntPtr.Zero)
+            {
+                // Search inside the children.
+                IntPtr hwndChild = FindWindowEx(hwndParent, IntPtr.Zero, null, null);
+                while (hwndChild != IntPtr.Zero && hwnd == IntPtr.Zero)
+                {
+                    hwnd = FindChildWindow(hwndChild, IntPtr.Zero, lpszClass, lpszTitle);
+                    if (hwnd == IntPtr.Zero)
+                    {
+                        // If we didn't find it yet, check the next child.
+                        hwndChild = FindWindowEx(hwndParent, hwndChild, null, null);
+                    }
+                }
+            }
+            return hwnd;
+        }
+
         #region IMPORTS
 
         private const uint WM_KEYDOWN = 0x0100;
@@ -405,47 +436,6 @@ namespace CitraTouchControl
             public int Right;
             public int Bottom;
         }
-
-        #endregion
-
-        #region UNUSED
-
-        /*
-        /// <summary>
-        /// Uses FindWindowEx() to recursively search for a child window with the given class and/or title.
-        /// </summary>
-        public static IntPtr FindChildWindow(IntPtr hwndParent, string lpszClass, string lpszTitle)
-        {
-            return FindChildWindow(hwndParent, IntPtr.Zero, lpszClass, lpszTitle);
-        }
-
-        /// <summary>
-        /// Uses FindWindowEx() to recursively search for a child window with the given class and/or title,
-        /// starting after a specified child window.
-        /// If lpszClass is null, it will match any class name. It's not case-sensitive.
-        /// If lpszTitle is null, it will match any window title.
-        /// </summary>
-        public static IntPtr FindChildWindow(IntPtr hwndParent, IntPtr hwndChildAfter, string lpszClass, string lpszTitle)
-        {
-            // Try to find a match.
-            IntPtr hwnd = FindWindowEx(hwndParent, IntPtr.Zero, lpszClass, lpszTitle);
-            if (hwnd == IntPtr.Zero)
-            {
-                // Search inside the children.
-                IntPtr hwndChild = FindWindowEx(hwndParent, IntPtr.Zero, null, null);
-                while (hwndChild != IntPtr.Zero && hwnd == IntPtr.Zero)
-                {
-                    hwnd = FindChildWindow(hwndChild, IntPtr.Zero, lpszClass, lpszTitle);
-                    if (hwnd == IntPtr.Zero)
-                    {
-                        // If we didn't find it yet, check the next child.
-                        hwndChild = FindWindowEx(hwndParent, hwndChild, null, null);
-                    }
-                }
-            }
-            return hwnd;
-        }
-        */
 
         #endregion
     }

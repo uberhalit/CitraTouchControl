@@ -56,8 +56,7 @@ namespace CitraTouchControl
         {
             if (File.Exists(savePath))
             {
-                var result = MessageBox.Show(this, "WARNING: Do you really wish to overwrite the last savegames?",
-                    "CitraTouchControl", MessageBoxButton.YesNo);
+                var result = MessageBox.Show(this, "WARNING: Do you really wish to overwrite the last savegames?", "CitraTouchControl", MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.No)
                     return;
                 File.Delete(savePath);
@@ -79,8 +78,7 @@ namespace CitraTouchControl
         {
             if (!File.Exists(savePath))
                 return;
-            var result = MessageBox.Show(this, "WARNING: Do you really wish to overwrite the current savegames?",
-                "CitraTouchControl", MessageBoxButton.YesNo);
+            var result = MessageBox.Show(this, "WARNING: Do you really wish to overwrite the current savegames?", "CitraTouchControl", MessageBoxButton.YesNo);
             if (result == MessageBoxResult.No)
                 return;
             try

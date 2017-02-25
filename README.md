@@ -57,9 +57,9 @@ It further features "savegame/bookmark replacement"; a very basic savestate syst
 | Platform | App | Working | Information |
 | ------------- | ------------- | ------------- | ------------- |
 | Android | [Microsoft Remote Desktop Beta](https://play.google.com/store/apps/details?id=com.microsoft.rdc.android.beta) | **_Yes_** |
+| Android | [TeamViewer](https://play.google.com/store/apps/details?id=com.teamviewer.teamviewer.market.mobile) | Yes | annoying swipe gestures, needs portrait (90° rotation) and resolution set on host-pc, distorted sound |
 | Android | [AccessToGo RDP/Remote Desktop](https://play.google.com/store/apps/details?id=com.ericom.accesstogobyericom) | Yes | buggy, annoying touch-feedback, no network level auth
 | Android | [Microsoft Remote Desktop](https://play.google.com/store/apps/details?id=com.microsoft.rdc.android) | no | no portrait mode |
-| Android | [TeamViewer](https://play.google.com/store/apps/details?id=com.teamviewer.teamviewer.market.mobile) | no | no portrait mode, no scaling, distorted sound |
 | Android | [RDP Remote Desktop aFreeRDP](https://play.google.com/store/apps/details?id=com.freerdp.afreerdp) | no | no (multi-)touch |
 | Android | [RDP Remote Desktop Connection](https://play.google.com/store/apps/details?id=com.thinstuff.rdc) | no | no (multi-)touch |
 | Android | [aRDP Pro: Secure RDP Client](https://play.google.com/store/apps/details?id=com.iiordanov.aRDP) | no | no (multi-)touch |

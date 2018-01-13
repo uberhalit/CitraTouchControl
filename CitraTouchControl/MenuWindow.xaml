@@ -26,7 +26,7 @@
         </Grid.RowDefinitions>
         <Button x:Name="bSave" Grid.Row="0" Grid.Column="0" Content="Save Savegames" FontSize="24" FontWeight="Bold" Margin="10,4,10,4" BorderThickness="1" Focusable="False" Grid.ColumnSpan="3" Click="bSave_Click"/>
         <Button x:Name="bLoad" Grid.Row="1" Grid.Column="0" Content="Load Savegames" FontSize="24" FontWeight="Bold" Margin="10,4,10,4" BorderThickness="1" Focusable="False" Grid.ColumnSpan="3" Click="bLoad_Click"/>
-        <Button x:Name="bResize" Grid.Row="2" Grid.Column="0" Content="Readjust Overlay" FontSize="24" FontWeight="Bold" Margin="10,4,10,4" BorderThickness="1" Focusable="False" Click="bResize_Click" Grid.ColumnSpan="3"/>
+        <Button x:Name="bReload" Grid.Row="2" Grid.Column="0" Content="Reload Overlay" FontSize="24" FontWeight="Bold" Margin="10,4,10,4" BorderThickness="1" Focusable="False" Click="bReload_Click" Grid.ColumnSpan="3"/>
         <Button x:Name="bTouch" Grid.Row="3" Grid.Column="0" Content="Enable Touch" FontSize="24" FontWeight="Bold" Margin="10,4,10,4" BorderThickness="1" Focusable="False" Click="bTouch_Click" Grid.ColumnSpan="3"/>
         <Button x:Name="bControls" Grid.Row="4" Grid.Column="0" Content="Hide Controls" FontSize="24" FontWeight="Bold" Margin="10,4,10,4" BorderThickness="1" Focusable="False" Click="bControls_Click" Grid.ColumnSpan="3"/>
         <Button x:Name="bTap" Grid.Row="5" Grid.Column="0" Content="Touch: Tap only" FontSize="24" FontWeight="Bold" Margin="10,4,10,4" BorderThickness="1" Focusable="False" Grid.ColumnSpan="3" Click="bTap_Click"/>

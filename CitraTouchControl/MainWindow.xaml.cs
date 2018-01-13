@@ -76,7 +76,7 @@ namespace CitraTouchControl
                 }
             }
 
-            ResizeOverlay();
+            ReloadOverlay();
 
             // load user settings into fast accessable global vars
             GlobalVars.A_KEY = Properties.Settings.Default.A_KEY;
@@ -310,10 +310,11 @@ namespace CitraTouchControl
         }
 
         /// <summary>
-        /// Gets citra window size and position and place overlay accordingly.
+        /// Resets citra handle, gets citra window size and position and place overlay accordingly.
         /// </summary>
-        internal void ResizeOverlay()
+        internal void ReloadOverlay()
         {
+            citraMainControlHwnd = IntPtr.Zero;
             RECT rect = new RECT();
             if (GetWindowActualRect(citraHwnd, out rect))
             {

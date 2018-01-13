@@ -69,6 +69,10 @@ namespace CitraTouchControl
             {
                 MessageBox.Show(this, "EXCEPTION: Error while trying to save savegames.\n" + ex.Message, "CitraTouchControl", MessageBoxButton.OK);
             }
+            finally
+            {
+                this.Close();
+            }
         }
 
         /// <summary>
@@ -99,14 +103,19 @@ namespace CitraTouchControl
             {
                 MessageBox.Show(this, "EXCEPTION: Error while trying to load savegames.\n" + ex.Message, "CitraTouchControl", MessageBoxButton.OK);
             }
+            finally
+            {
+                this.Close();
+            }
         }
 
         /// <summary>
-        /// Resizes the overlay to match citra again.
+        /// Reloads the overlay to match citra again.
         /// </summary>
-        private void bResize_Click(object sender, RoutedEventArgs e)
+        private void bReload_Click(object sender, RoutedEventArgs e)
         {
-            mainWindow.ResizeOverlay();
+            mainWindow.ReloadOverlay();
+            this.Close();
         }
 
         /// <summary>

@@ -2,7 +2,7 @@
 {
     class GlobalVars
     {
-        // fast access variables so user4settings doesn't have to be loaded/looped through every time user presses a control button
+        // fast access variables so user settings doesn't have to be loaded/looped through every time user presses a control button
         internal static short A_KEY = 0x41;         // A
         internal static short B_KEY = 0x53;         // S
         internal static short X_KEY = 0x5A;         // Y (Z on QWERTZ-Layout)
